@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bot</groupId>
-    <artifactId>botWithSpring</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <description>telegram bot with remote spring-boot-starter</description>
+    <artifactId>telegram-bot-price-parser</artifactId>
+    <version>1.0</version>
+    <description>telegram bot for heroku</description>
     <packaging>jar</packaging>
 
     <properties>
