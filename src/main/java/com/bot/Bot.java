@@ -1,7 +1,5 @@
 package com.bot;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -10,11 +8,14 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.annotation.PostConstruct;
 
+@Slf4j
 @Component
 class Bot extends TelegramLongPollingBot {
-    private static final Logger logger = LoggerFactory.getLogger(Bot.class);
+
     private final String token;
     private final String username;
 
@@ -44,16 +45,15 @@ class Bot extends TelegramLongPollingBot {
             response.setText(text);
             try {
                 execute(response);
-                logger.info("Sent message \"{}\" to {}", text, chatId);
+                log.info("Sent message \"{}\" to {}", text, chatId);
             } catch (TelegramApiException e) {
-                logger.error("Failed to send message \"{}\" to {} due to error: {}", text, chatId, e.getMessage());
+                log.error("Failed to send message \"{}\" to {} due to error: {}", text, chatId, e.getMessage());
             }
         }
     }
 
     @PostConstruct
     public void start() {
-        logger.info("username: {}, token: {}", username, token);
+        log.info("username: {}, token: {}", username, token);
     }
-
 }
