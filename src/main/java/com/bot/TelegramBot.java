@@ -14,12 +14,12 @@ import javax.annotation.PostConstruct;
 
 @Slf4j
 @Component
-class Bot extends TelegramLongPollingBot {
+class TelegramBot extends TelegramLongPollingBot {
 
     private final String token;
     private final String username;
 
-    Bot(@Value("${bot.token}") String token, @Value("${bot.username}") String username) {
+    TelegramBot(@Value("${bot.token}") String token, @Value("${bot.username}") String username) {
         this.token = token;
         this.username = username;
     }

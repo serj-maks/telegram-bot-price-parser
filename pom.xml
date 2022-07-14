@@ -9,46 +9,77 @@
     <artifactId>telegram-bot-price-parser</artifactId>
     <version>1.0</version>
 
-    <description>telegram bot for heroku</description>
+    <description>telegram bot prce parser for heroku deploying</description>
 
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
+        <spring.version>2.7.1</spring.version>
         <telegram-spring-boot-starter.version>0.26</telegram-spring-boot-starter.version>
         <telegrambots.version>5.7.1</telegrambots.version>
         <lombok.version>1.18.22</lombok.version>
-        <logback.version>1.2.3</logback.version>
+        <logback.version>1.2.11</logback.version>
+        <emoji.version>5.1.1</emoji.version>
+
         <maven-compiler.version>3.10.1</maven-compiler.version>
         <maven-dependency.version>3.1.2</maven-dependency.version>
     </properties>
 
     <dependencies>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.github.xabgesagtx</groupId>
             <artifactId>telegram-spring-boot-starter</artifactId>
             <version>${telegram-spring-boot-starter.version}</version>
         </dependency>
+        <!-- spring-end -->
 
+        <!-- telegram -->
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
             <version>${telegrambots.version}</version>
         </dependency>
+        <!-- telegram-end -->
 
+        <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- lombok-end -->
 
+        <!-- logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
+        <!-- logback-end -->
+
+        <!-- emoji -->
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji.version}</version>
+        </dependency>
+        <!-- emoji-end -->
     </dependencies>
 
     <build>
@@ -69,6 +100,7 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
